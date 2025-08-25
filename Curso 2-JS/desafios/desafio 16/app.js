@@ -1,13 +1,18 @@
-let titulo = document.querySelector('h1');
-titulo.innerHTML = ('Desafio 11');
+function mostrarTextoNaTela(campo, texto){
+    let titulo = document.querySelector(campo);
+    titulo.innerHTML = texto;
+}
+
+mostrarTextoNaTela('h1','Desafio 16');
 
 function iniciar(){
-    let n = parseInt(prompt('Digite um número: '));
-    let elemesmo = vezesele(n);
+    let raio = parseFloat(prompt('Informe o raio da sala: ').replace(',','.'));
 
-    function vezesele(x){
-        return x*x
+    let area = calcularArea(raio);
+
+    function calcularArea(x){
+        return 3.14*(x*x)
     }
 
-    titulo.innerHTML = (`O quadrado do número informado é ${elemesmo}`);
+    mostrarTextoNaTela('h1', `A área da sala é de ${area.toFixed(2)}`);
 }

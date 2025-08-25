@@ -1,13 +1,31 @@
-let titulo = document.querySelector('h1');
-titulo.innerHTML = ('Desafio 11');
+function mostrarTextoNaTela(campo, texto){
+    let titulo = document.querySelector(campo);
+    titulo.innerHTML = texto;
+}
+
+mostrarTextoNaTela('h1', 'Desafio 15');
 
 function iniciar(){
-    let n = parseInt(prompt('Digite um número: '));
-    let elemesmo = vezesele(n);
+   let altura = prompt('Informe a altura da sala: ');
+   let largura = prompt('Informe a largura da sala: ');
+   
+    let alturaf = formatar(altura);
+    let larguraf = formatar(largura)
 
-    function vezesele(x){
-        return x*x
-    }
+   function formatar(valor){
+        return parseFloat(valor.replace(',','.'));
+   }
 
-    titulo.innerHTML = (`O quadrado do número informado é ${elemesmo}`);
+   let area = calcularArea(alturaf, larguraf);
+   let perimetro = calcularPerimetro(alturaf, larguraf);
+
+   function calcularArea(x,y){
+        return x*y
+   }
+
+   function calcularPerimetro(x,y){
+        return 2*x + 2*y
+   }
+
+   mostrarTextoNaTela('h1', `A área é ${area} e o perímetro é ${perimetro}`);
 }

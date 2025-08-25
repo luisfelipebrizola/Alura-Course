@@ -1,13 +1,23 @@
-let titulo = document.querySelector('h1');
-titulo.innerHTML = ('Desafio 11');
+function mostrarTextoNaTela(campo, texto){
+    let titulo = document.querySelector(campo);
+    titulo.innerHTML = texto
+}
+
+mostrarTextoNaTela('h1', 'Desafio 13');
 
 function iniciar(){
-    let n = parseInt(prompt('Digite um número: '));
-    let elemesmo = vezesele(n);
+    let num = parseInt(prompt('Informe um número real, positivo e inteiro: '));
 
-    function vezesele(x){
-        return x*x
+    let resfat = calcularFat(num)
+
+    function calcularFat(x){
+        c = x - 1
+        while(c >= 1){
+            x = x*c
+            c = c - 1
+        }
+        return x
     }
 
-    titulo.innerHTML = (`O quadrado do número informado é ${elemesmo}`);
+    mostrarTextoNaTela('h1', `O resultado do fatorial de ${num} é ${resfat}`);
 }

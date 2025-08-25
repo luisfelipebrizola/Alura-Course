@@ -1,13 +1,19 @@
-let titulo = document.querySelector('h1');
-titulo.innerHTML = ('Desafio 11');
+function mostrarTextoNaTela(campo, texto){
+    let titulo = document.querySelector(campo);
+    titulo.innerHTML = texto;
+}
+
+mostrarTextoNaTela('h1', 'Desafio 14');
 
 function iniciar(){
-    let n = parseInt(prompt('Digite um número: '));
-    let elemesmo = vezesele(n);
+    let valor = prompt('Informe um valor: ');
+    let valorf = parseFloat(valor.replace(',','.'));
+    let conversao = converter(valorf)
 
-    function vezesele(x){
-        return x*x
+    function converter(x){
+        x = x*4.8
+        return x
     }
 
-    titulo.innerHTML = (`O quadrado do número informado é ${elemesmo}`);
+    mostrarTextoNaTela('h1', `${valor} dólares equivale a ${conversao} reais `);
 }
