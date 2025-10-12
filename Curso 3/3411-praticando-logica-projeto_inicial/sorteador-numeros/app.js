@@ -7,7 +7,13 @@ function sortear(){
     let sorteados = [];
     let numero;
 
-    for (let i  = 0; i < quant; i++){
+    if(de > ate){
+        alert('[Erro] Não foi possível sortear nenhum número pois os dados informados são incoerentes!');
+    } else{
+    if(quant > (ate - de) + 1){
+        alert('[ERRO] Não é possível sortear esta quantidade de números dentro deste intervalo!')
+    }else{
+        for (let i  = 0; i < quant; i++){
         numero = obterNumeroAleatorio(de, ate);
 
         while(sorteados.includes(numero)){
@@ -19,9 +25,17 @@ function sortear(){
         
     
     }
+    }
+    
+    sorteados.sort(function(a,b){
+        return a - b;
+    });
 
     let resultado = document.getElementById('resultado');
     resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${sorteados}</label>`
+
+    alterarStatusBotao();
+    }
     
 }
 
@@ -30,4 +44,23 @@ function obterNumeroAleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
     
     
+}
+
+function alterarStatusBotao(){
+    let botao = document.getElementById('btn-reiniciar');
+    if(botao.classList.contains('container__botao-desabilitado')){
+        botao.classList.remove('container__botao-desabilitado');
+        botao.classList.add('container__botao');
+    }else{
+        botao.classList.remove('container__botao');
+        botao.classList.add('container__botao-desabilitado');
+    }
+}
+
+function reiniciar(){
+    document.getElementById('quantidade').value = '';
+    document.getElementById('de').value = '';
+    document.getElementById('ate').value = '';
+    document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>';
+    alterarStatusBotao();
 }
