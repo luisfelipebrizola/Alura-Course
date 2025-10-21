@@ -4,12 +4,22 @@ function adicionar(){
     let amigo = document.getElementById('nome-amigo').value;
     let adicionados = document.getElementById('lista-amigos');
     amigos.push(amigo);
-    if(adicionados.innerHTML == ''){
+    
+    if(amigo == ''){
+        alert('[ERRO] Nenhum nome informado!');
+    }else if(adicionados.innerHTML.includes(amigo)){
+        alert('[ERRO] Amigo já adicionado!');
+    }else{
+        if(adicionados.innerHTML == ''){
         adicionados.innerHTML = amigo
     } else{
         adicionados.innerHTML = adicionados.innerHTML + ', ' + amigo
     }
 
+    }
+
+    
+    
     document.getElementById('nome-amigo').value = '';
 }
 
@@ -17,7 +27,10 @@ function sortear(){
     embaralha(amigos);
     let sorteio = document.getElementById('lista-sorteio');
 
-    for(i = 0; i < amigos.length; i++){
+    if(amigos.length < 4){
+        alert('[ERRO] Quantidade mínima de participantes não atingida!(4)');
+    }else{
+        for(i = 0; i < amigos.length; i++){
         if(i == amigos.length - 1){
             sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> ' + amigos[0] + '<br>'
         } else {
@@ -25,6 +38,8 @@ function sortear(){
         }
         
     }
+    }
+    
 }
 
 function embaralha(lista) {
